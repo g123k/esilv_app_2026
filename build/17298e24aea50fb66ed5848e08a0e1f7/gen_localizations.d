@@ -1,0 +1,1 @@
+ /Users/g123k/IdeaProjects/esilv/lib/l10n/app_localizations_fr.dart /Users/g123k/IdeaProjects/esilv/lib/l10n/app_localizations.dart:  /Users/g123k/IdeaProjects/esilv/l10n.yaml /Users/g123k/IdeaProjects/esilv/lib/l10n/app_fr.arb
