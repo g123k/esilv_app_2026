@@ -1,5 +1,5 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
-import 'package:esilv_app/pages/products_list.dart';
+import 'package:esilv_app/pages/product_details.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,16 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Avenir',
       ),
       debugShowCheckedModeBanner: false,
-      home: const ProductsList(),
+      home: const ProductDetails(),
     );
-  }
-}
-
-class DemoStack extends StatelessWidget {
-  const DemoStack({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-   return SizedBox();
   }
 }
