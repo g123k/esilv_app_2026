@@ -24,3 +24,12 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class DemoStack extends StatelessWidget {
+  const DemoStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+   return SizedBox();
+  }
+}

@@ -26,10 +26,11 @@ class ProductsList extends StatelessWidget {
         child: Column(
           mainAxisSize: .min,
           children: [
+            Spacer(flex: 5),
             SvgPicture.asset('res/svg/ill_empty.svg'),
-            SizedBox(height: 50.0),
+            Spacer(flex: 2),
             Text('Vous n\'avez pas encore scanné de produit'),
-            SizedBox(height: 50.0),
+            Spacer(flex: 1),
             TextButton(
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.blue,
@@ -43,10 +44,12 @@ class ProductsList extends StatelessWidget {
                 mainAxisSize: .min,
                 children: [
                   Text('Commencer'),
+                  SizedBox(width: 10.0),
                   Icon(Icons.arrow_right_alt_rounded),
                 ],
               ),
             ),
+            Spacer(flex: 5),
           ],
         ),
       ),
