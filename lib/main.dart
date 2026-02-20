@@ -1,5 +1,6 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
-import 'package:esilv_app/pages/product_details.dart';
+import 'package:esilv_app/res/app_theme_extension.dart';
+import 'package:esilv_app/screens/product/product_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,10 +18,11 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        extensions: [OffThemeExtension.defaultValues()],
         fontFamily: 'Avenir',
       ),
       debugShowCheckedModeBanner: false,
-      home: const ProductDetails(),
+      home: const ProductPage(),
     );
   }
 }
