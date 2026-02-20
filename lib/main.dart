@@ -24,6 +24,14 @@ class MyApp extends StatelessWidget {
         navigationBarTheme: const NavigationBarThemeData(
           indicatorColor: AppColors.blue,
         ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: AppColors.blue,
+          unselectedItemColor: AppColors.grey2,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const ProductPage(),
