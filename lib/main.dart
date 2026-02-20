@@ -1,4 +1,5 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
+import 'package:esilv_app/res/app_colors.dart';
 import 'package:esilv_app/res/app_theme_extension.dart';
 import 'package:esilv_app/screens/product/product_page.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         extensions: [OffThemeExtension.defaultValues()],
         fontFamily: 'Avenir',
+        navigationBarTheme: const NavigationBarThemeData(
+          indicatorColor: AppColors.blue,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const ProductPage(),
