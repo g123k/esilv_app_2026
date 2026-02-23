@@ -271,4 +271,3 @@ Product generateProduct() => Product(
     salt: Nutriment(unit: 'g', perServing: 0.1, per100g: 0.1),
   ),
 );
-
