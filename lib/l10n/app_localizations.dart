@@ -154,6 +154,12 @@ abstract class AppLocalizations {
   /// **'Végétarien'**
   String get product_vegetarian;
 
+  /// No description provided for @product_recall_banner.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce produit fait l’objet d’un rappel'**
+  String get product_recall_banner;
+
   /// No description provided for @product_tab_summary.
   ///
   /// In fr, this message translates to:
@@ -177,6 +183,30 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Tableau'**
   String get product_tab_nutrition_facts;
+
+  /// No description provided for @product_properties_ingredients.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ingrédients'**
+  String get product_properties_ingredients;
+
+  /// No description provided for @product_properties_allergens.
+  ///
+  /// In fr, this message translates to:
+  /// **'Substances allergènes'**
+  String get product_properties_allergens;
+
+  /// No description provided for @product_properties_additives.
+  ///
+  /// In fr, this message translates to:
+  /// **'Additifs'**
+  String get product_properties_additives;
+
+  /// No description provided for @product_properties_empty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune'**
+  String get product_properties_empty;
 
   /// No description provided for @product_nutrition_facts_per_100g.
   ///
@@ -243,6 +273,66 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Sodium'**
   String get product_nutrition_facts_sodium;
+
+  /// No description provided for @product_recall_header.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rappel produit'**
+  String get product_recall_header;
+
+  /// No description provided for @product_recall_share.
+  ///
+  /// In fr, this message translates to:
+  /// **'Partager ce rappel produit'**
+  String get product_recall_share;
+
+  /// No description provided for @product_recall_section_dates.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dates de commercialisation'**
+  String get product_recall_section_dates;
+
+  /// No description provided for @product_recall_dates_label.
+  ///
+  /// In fr, this message translates to:
+  /// **'Du {startDate} au {endDate}'**
+  String product_recall_dates_label(Object startDate, Object endDate);
+
+  /// No description provided for @product_recall_section_distributors.
+  ///
+  /// In fr, this message translates to:
+  /// **'Distributeurs'**
+  String get product_recall_section_distributors;
+
+  /// No description provided for @product_recall_geographical_area.
+  ///
+  /// In fr, this message translates to:
+  /// **'Zone géographique'**
+  String get product_recall_geographical_area;
+
+  /// No description provided for @product_recall_reason.
+  ///
+  /// In fr, this message translates to:
+  /// **'Motif du rappel'**
+  String get product_recall_reason;
+
+  /// No description provided for @product_recall_safety_measures.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mesures de sécurité'**
+  String get product_recall_safety_measures;
+
+  /// No description provided for @product_recall_additional_info.
+  ///
+  /// In fr, this message translates to:
+  /// **'Informations complémentaires'**
+  String get product_recall_additional_info;
+
+  /// No description provided for @product_recall_action_required.
+  ///
+  /// In fr, this message translates to:
+  /// **'Action(s) requise(s)'**
+  String get product_recall_action_required;
 }
 
 class _AppLocalizationsDelegate

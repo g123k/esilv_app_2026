@@ -3,107 +3,101 @@ import 'package:esilv_app/model/product.dart';
 import 'package:esilv_app/res/app_colors.dart';
 import 'package:esilv_app/res/app_icons.dart';
 import 'package:esilv_app/res/app_theme_extension.dart';
-import 'package:esilv_app/screens/product/product_provider.dart';
+import 'package:esilv_app/screens/product/data/product_provider.dart';
+import 'package:esilv_app/screens/product/product_page_body.dart';
 import 'package:flutter/material.dart';
 
 class ProductTab0 extends StatelessWidget {
   const ProductTab0({super.key});
 
-  static const double IMAGE_HEIGHT = 300.0;
-
   @override
   Widget build(BuildContext context) {
-    final Product product = ProductProvider.of(context).product;
-
-    return SizedBox.expand(
-      child: Stack(
-        children: [
-          PositionedDirectional(
-            top: 0.0,
-            start: 0.0,
-            end: 0.0,
-            height: IMAGE_HEIGHT,
-            child: Image.network(
-              product.picture ?? '',
-              fit: BoxFit.cover,
-              cacheHeight:
-                  (IMAGE_HEIGHT * MediaQuery.devicePixelRatioOf(context))
-                      .toInt(),
-            ),
+    return const Column(
+      crossAxisAlignment: .start,
+      children: <Widget>[
+        _Scores(),
+        Padding(
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: ProductPageBody.kHorizontalPadding,
+            vertical: 30.0,
           ),
-          PositionedDirectional(
-            top: IMAGE_HEIGHT - 16.0,
-            start: 0.0,
-            end: 0.0,
-            bottom: 0.0,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-                color: Colors.white,
-              ),
-              padding: EdgeInsetsDirectional.symmetric(
-                horizontal: 20.0,
-                vertical: 30.0,
-              ),
-              child: Column(
-                crossAxisAlignment: .start,
-                children: [
-                  Text(product.name ?? '', style: context.theme.title1),
-                  Text(
-                    product.brands?.join(',') ?? '',
-                    style: context.theme.title2,
-                  ),
-                  Scores(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Scores extends StatelessWidget {
-  const Scores({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final Product product = ProductProvider.of(context).product;
-
-    return Column(
-      children: [
-        IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: .start,
-            children: [
-              Expanded(
-                flex: 44,
-                child: _Nutriscore(
-                  nutriscore: product.nutriScore ?? ProductNutriScore.unknown,
-                ),
-              ),
-              VerticalDivider(),
-              Expanded(
-                flex: 56,
-                child: _NovaGroup(
-                  novaScore: product.novaScore ?? ProductNovaScore.unknown,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Divider(),
-        _GreenScore(
-          greenScore: product.greenScore ?? ProductGreenScore.unknown,
+          child: _Info(),
         ),
       ],
     );
   }
 }
 
-class _Nutriscore extends StatelessWidget {
-  const _Nutriscore({required this.nutriscore});
+class _Scores extends StatelessWidget {
+  const _Scores();
+
+  static const double _horizontalPadding = ProductPageBody.kHorizontalPadding;
+  static const double _verticalPadding = 18.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final Product product = ProductProvider.of(context).product;
+
+    return DefaultTextStyle(
+      style: context.theme.altText,
+      child: ColoredBox(
+        color: AppColors.grey1,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsetsDirectional.symmetric(
+                vertical: _verticalPadding,
+                horizontal: _horizontalPadding,
+              ),
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 44,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(end: 5.0),
+                        child: _NutriScore(
+                          nutriscore:
+                              product.nutriScore ?? ProductNutriScore.unknown,
+                        ),
+                      ),
+                    ),
+                    const VerticalDivider(),
+                    Expanded(
+                      flex: 56,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(start: 25.0),
+                        child: _NovaGroup(
+                          novaScore:
+                              product.novaScore ?? ProductNovaScore.unknown,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsetsDirectional.symmetric(
+                vertical: _verticalPadding,
+                horizontal: _horizontalPadding,
+              ),
+              child: _GreenScore(
+                greenScore: product.greenScore ?? ProductGreenScore.unknown,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NutriScore extends StatelessWidget {
+  const _NutriScore({required this.nutriscore});
 
   final ProductNutriScore nutriscore;
 
@@ -203,14 +197,14 @@ class _GreenScore extends StatelessWidget {
 
   IconData _findIcon() {
     return switch (greenScore) {
-      ProductGreenScore.APlus => AppIcons.ecoscore_a_plus,
-      ProductGreenScore.A => AppIcons.ecoscore_a,
-      ProductGreenScore.B => AppIcons.ecoscore_b,
-      ProductGreenScore.C => AppIcons.ecoscore_c,
-      ProductGreenScore.D => AppIcons.ecoscore_d,
-      ProductGreenScore.E => AppIcons.ecoscore_e,
-      ProductGreenScore.F => AppIcons.ecoscore_f,
-      ProductGreenScore.unknown => AppIcons.ecoscore_e,
+      ProductGreenScore.APlus => AppIcons.greenscore_a_plus,
+      ProductGreenScore.A => AppIcons.greenscore_a,
+      ProductGreenScore.B => AppIcons.greenscore_b,
+      ProductGreenScore.C => AppIcons.greenscore_c,
+      ProductGreenScore.D => AppIcons.greenscore_d,
+      ProductGreenScore.E => AppIcons.greenscore_e,
+      ProductGreenScore.F => AppIcons.greenscore_f,
+      ProductGreenScore.unknown => AppIcons.greenscore_e,
     };
   }
 
@@ -240,3 +234,117 @@ class _GreenScore extends StatelessWidget {
     };
   }
 }
+
+class _Info extends StatelessWidget {
+  const _Info();
+
+  @override
+  Widget build(BuildContext context) {
+    final Product product = ProductProvider.of(context).product;
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        _ProductItemValue(
+          label: localizations.product_quantity,
+          value: product.quantity ?? '-',
+        ),
+        _ProductItemValue(
+          label: localizations.product_countries,
+          value: product.manufacturingCountries?.join(', ') ?? '-',
+          includeDivider: false,
+        ),
+        const SizedBox(height: 15.0),
+        Row(
+          children: <Widget>[
+            Expanded(
+              flex: 40,
+              child: _ProductBubble(
+                label: localizations.product_vegan,
+                value: _ProductBubbleValue.off,
+              ),
+            ),
+            const Spacer(flex: 10),
+            Expanded(
+              flex: 40,
+              child: _ProductBubble(
+                label: localizations.product_vegetarian,
+                value: _ProductBubbleValue.on,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _ProductItemValue extends StatelessWidget {
+  const _ProductItemValue({
+    required this.label,
+    required this.value,
+    this.includeDivider = true,
+  });
+
+  final String label;
+  final String value;
+  final bool includeDivider;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsetsDirectional.symmetric(vertical: 12.0),
+          child: Row(
+            children: <Widget>[
+              Expanded(child: Text(label)),
+              Expanded(child: Text(value, textAlign: TextAlign.end)),
+            ],
+          ),
+        ),
+        if (includeDivider) const Divider(height: 1.0),
+      ],
+    );
+  }
+}
+
+class _ProductBubble extends StatelessWidget {
+  const _ProductBubble({required this.label, required this.value});
+
+  final String label;
+  final _ProductBubbleValue value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.blueLight,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      padding: const EdgeInsetsDirectional.symmetric(
+        vertical: 10.0,
+        horizontal: 15.0,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(
+            value == _ProductBubbleValue.on
+                ? AppIcons.checkmark
+                : AppIcons.close,
+            color: AppColors.white,
+          ),
+          const SizedBox(width: 10.0),
+          Expanded(
+            child: Text(label, style: const TextStyle(color: AppColors.white)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+enum _ProductBubbleValue { on, off }

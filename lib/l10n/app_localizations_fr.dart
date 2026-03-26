@@ -40,6 +40,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get product_vegetarian => 'Végétarien';
 
   @override
+  String get product_recall_banner => 'Ce produit fait l’objet d’un rappel';
+
+  @override
   String get product_tab_summary => 'Fiche';
 
   @override
@@ -50,6 +53,18 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get product_tab_nutrition_facts => 'Tableau';
+
+  @override
+  String get product_properties_ingredients => 'Ingrédients';
+
+  @override
+  String get product_properties_allergens => 'Substances allergènes';
+
+  @override
+  String get product_properties_additives => 'Additifs';
+
+  @override
+  String get product_properties_empty => 'Aucune';
 
   @override
   String get product_nutrition_facts_per_100g => 'Pour 100 g';
@@ -84,4 +99,36 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get product_nutrition_facts_sodium => 'Sodium';
+
+  @override
+  String get product_recall_header => 'Rappel produit';
+
+  @override
+  String get product_recall_share => 'Partager ce rappel produit';
+
+  @override
+  String get product_recall_section_dates => 'Dates de commercialisation';
+
+  @override
+  String product_recall_dates_label(Object startDate, Object endDate) {
+    return 'Du $startDate au $endDate';
+  }
+
+  @override
+  String get product_recall_section_distributors => 'Distributeurs';
+
+  @override
+  String get product_recall_geographical_area => 'Zone géographique';
+
+  @override
+  String get product_recall_reason => 'Motif du rappel';
+
+  @override
+  String get product_recall_safety_measures => 'Mesures de sécurité';
+
+  @override
+  String get product_recall_additional_info => 'Informations complémentaires';
+
+  @override
+  String get product_recall_action_required => 'Action(s) requise(s)';
 }

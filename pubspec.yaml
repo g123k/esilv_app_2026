@@ -15,8 +15,10 @@ dependencies:
     sdk: flutter
   intl: any
 
+  provider: 6.1.5+1
+
   # UI
-  flutter_svg: 2.2.3
+  flutter_svg: 2.2.4
 
 dev_dependencies:
   flutter_test:

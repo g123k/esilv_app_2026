@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(localizations.my_scans_screen_title),
-        centerTitle: false,
         actions: [
           IconButton(
             onPressed: () {},
@@ -38,6 +37,7 @@ class HomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               TextButton(
+                onPressed: () {},
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppColors.blue,
                   backgroundColor: AppColors.yellow,
@@ -45,7 +45,6 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(22.0)),
                   ),
                 ),
-                onPressed: () {},
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

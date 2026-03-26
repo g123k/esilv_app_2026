@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         extensions: [OffThemeExtension.defaultValues()],
         fontFamily: 'Avenir',
+        appBarTheme: AppBarThemeData(centerTitle: false),
         navigationBarTheme: const NavigationBarThemeData(
           indicatorColor: AppColors.blue,
         ),
@@ -32,8 +33,10 @@ class MyApp extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
         ),
+        dividerTheme: DividerThemeData(color: AppColors.divider, space: 1.0),
       ),
       debugShowCheckedModeBanner: false,
+      // TODO On modifie ici la page à afficher
       home: const ProductPage(),
     );
   }
