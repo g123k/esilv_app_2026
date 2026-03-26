@@ -29,13 +29,16 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 15.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Spacer(flex: 20),
               SvgPicture.asset(AppVectorialImages.illEmpty),
+              Spacer(flex: 10),
               Text(
                 'Vous n\'avez pas encore scanné de produit',
                 textAlign: TextAlign.center,
               ),
+              Spacer(flex: 15),
               TextButton(
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
@@ -54,6 +57,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+              Spacer(flex: 20),
             ],
           ),
         ),
