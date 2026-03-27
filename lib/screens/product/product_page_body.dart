@@ -1,5 +1,7 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
 import 'package:esilv_app/res/app_icons.dart';
+import 'package:esilv_app/screens/product/data/product_favorite_notifier.dart';
+import 'package:esilv_app/screens/product/data/product_provider.dart';
 import 'package:esilv_app/screens/product/tabs/product_tab_0.dart';
 import 'package:esilv_app/screens/product/tabs/product_tab_1.dart';
 import 'package:esilv_app/screens/product/tabs/product_tab_2.dart';
@@ -20,8 +22,15 @@ class ProductPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<PageController>(
-      create: (_) => PageController(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<PageController>(create: (_) => PageController()),
+        ChangeNotifierProvider<ProductFavoriteNotifier>(
+          create: (_) => ProductFavoriteNotifier(
+            ProductProvider.of(context).product.barcode,
+          ),
+        ),
+      ],
       child: Scaffold(
         body: SizedBox.expand(
           child: Stack(
@@ -50,10 +59,16 @@ class ProductPageBody extends StatelessWidget {
               PositionedDirectional(
                 top: 0.0,
                 end: 0.0,
-                child: ProductAppBarIcon(
-                  icon: Icon(AppIcons.star),
-                  onTap: () {
-                    // TODO
+                child: Consumer<ProductFavoriteNotifier>(
+                  builder: (_, ProductFavoriteNotifier notifier, _) {
+                    return ProductAppBarIcon(
+                      icon: Icon(
+                        notifier.value == true
+                            ? AppIcons.star
+                            : AppIcons.star_empty,
+                      ),
+                      onTap: () => notifier.toggle(),
+                    );
                   },
                 ),
               ),
