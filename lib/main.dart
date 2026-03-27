@@ -1,19 +1,39 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
+import 'package:esilv_app/model/product_recall.dart';
 import 'package:esilv_app/res/app_colors.dart';
 import 'package:esilv_app/res/app_theme_extension.dart';
+import 'package:esilv_app/screens/homepage/home_page.dart';
 import 'package:esilv_app/screens/product/product_page.dart';
+import 'package:esilv_app/screens/product_recall/product_recall_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(path: '/', builder: (_, _) => const HomePage()),
+    GoRoute(
+      path: '/product',
+      builder: (_, GoRouterState state) =>
+          ProductPage(barcode: state.uri.queryParameters['barcode']!),
+    ),
+    GoRoute(
+      path: '/product/recall',
+      builder: (_, GoRouterState state) =>
+          ProductRecallPage(recall: state.extra as ProductRecall),
+    ),
+  ],
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -36,8 +56,7 @@ class MyApp extends StatelessWidget {
         dividerTheme: DividerThemeData(color: AppColors.divider, space: 1.0),
       ),
       debugShowCheckedModeBanner: false,
-      // TODO On modifie ici la page à afficher
-      home: const ProductPage(),
+      routerConfig: _router,
     );
   }
 }

@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ProductRecallPage extends StatelessWidget {
-  const ProductRecallPage({super.key});
+  const ProductRecallPage({super.key, required this.recall});
+
+  final ProductRecall recall;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class ProductRecallPage extends StatelessWidget {
         ],
       ),
       body: ProductRecallProvider(
-        productRecall: generateProductRecall(),
+        productRecall: recall,
         child: ListView(
           children: [
             ProductRecallPicture(),

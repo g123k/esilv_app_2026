@@ -8,6 +8,7 @@ import 'package:esilv_app/screens/product/widgets/product_app_bar_icon.dart';
 import 'package:esilv_app/screens/product/widgets/product_header.dart';
 import 'package:esilv_app/screens/product/widgets/product_picture.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class ProductPageBody extends StatelessWidget {
@@ -43,9 +44,7 @@ class ProductPageBody extends StatelessWidget {
                 start: 0.0,
                 child: ProductAppBarIcon(
                   icon: const Icon(Icons.arrow_back_rounded),
-                  onTap: () {
-                    // TODO
-                  },
+                  onTap: context.pop,
                 ),
               ),
               PositionedDirectional(

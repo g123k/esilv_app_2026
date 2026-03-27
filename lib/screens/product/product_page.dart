@@ -4,7 +4,9 @@ import 'package:esilv_app/screens/product/product_page_body.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+  const ProductPage({super.key, required this.barcode});
+
+  final String barcode;
 
   @override
   Widget build(BuildContext context) {

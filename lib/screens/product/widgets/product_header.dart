@@ -1,10 +1,12 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
 import 'package:esilv_app/model/product.dart';
+import 'package:esilv_app/model/product_recall.dart';
 import 'package:esilv_app/res/app_colors.dart';
 import 'package:esilv_app/res/app_theme_extension.dart';
 import 'package:esilv_app/screens/product/data/product_provider.dart';
 import 'package:esilv_app/screens/product/product_page_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductHeader extends StatelessWidget {
   const ProductHeader({super.key});
@@ -58,9 +60,8 @@ class _ProductRecallBanner extends StatelessWidget {
         borderRadius: _kBorderRadius,
         child: InkWell(
           borderRadius: _kBorderRadius,
-          onTap: () {
-            // TODO
-          },
+          onTap: () =>
+              context.push('/product/recall', extra: generateProductRecall()),
           child: SizedBox(
             width: double.infinity,
             child: Padding(

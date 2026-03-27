@@ -4,6 +4,7 @@ import 'package:esilv_app/res/app_icons.dart';
 import 'package:esilv_app/res/app_vectorial_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
               ),
               Spacer(flex: 15),
               TextButton(
-                onPressed: () {},
+                onPressed: () => context.push('/product?barcode=5000159484695'),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppColors.blue,
                   backgroundColor: AppColors.yellow,
