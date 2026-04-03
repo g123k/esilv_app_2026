@@ -5,6 +5,8 @@
   "nova_group": "Groupe NOVA",
   "nutriscore": "Nutri-Score",
   "greenscore": "Green-Score",
+  "product_action_add_to_favorites": "Ajouter aux favoris",
+  "product_action_remove_from_favorites": "Retirer des favoris",
   "product_quantity": "Quantité :",
   "product_countries": "Vendu en :",
   "product_vegan": "Végan",

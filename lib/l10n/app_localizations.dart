@@ -130,6 +130,18 @@ abstract class AppLocalizations {
   /// **'Green-Score'**
   String get greenscore;
 
+  /// No description provided for @product_action_add_to_favorites.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter aux favoris'**
+  String get product_action_add_to_favorites;
+
+  /// No description provided for @product_action_remove_from_favorites.
+  ///
+  /// In fr, this message translates to:
+  /// **'Retirer des favoris'**
+  String get product_action_remove_from_favorites;
+
   /// No description provided for @product_quantity.
   ///
   /// In fr, this message translates to:

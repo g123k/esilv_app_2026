@@ -1,5 +1,4 @@
 import 'package:esilv_app/l10n/app_localizations.dart';
-import 'package:esilv_app/model/product.dart';
 import 'package:esilv_app/model/product_recall.dart';
 import 'package:esilv_app/res/app_colors.dart';
 import 'package:esilv_app/res/app_theme_extension.dart';
@@ -7,14 +6,13 @@ import 'package:esilv_app/screens/product/data/product_provider.dart';
 import 'package:esilv_app/screens/product/product_page_body.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class ProductHeader extends StatelessWidget {
   const ProductHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Product product = ProductProvider.of(context).product;
-
     return Padding(
       padding: const EdgeInsetsDirectional.only(
         top: 30.0,
@@ -27,18 +25,24 @@ class ProductHeader extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsetsDirectional.symmetric(horizontal: 6.0),
-            child: Column(
-              crossAxisAlignment: .start,
-              children: [
-                Text(product.name ?? '-', style: context.theme.title1),
-                Text(
-                  product.brands?.join(', ') ?? '-',
-                  style: context.theme.title2,
-                ),
-              ],
+            child: Consumer<ProductProvider>(
+              builder: (_, provider, _) {
+                return Column(
+                  crossAxisAlignment: .start,
+                  children: [
+                    Text(
+                      provider.product.name ?? '-',
+                      style: context.theme.title1,
+                    ),
+                    Text(
+                      provider.product.brands?.join(', ') ?? '-',
+                      style: context.theme.title2,
+                    ),
+                  ],
+                );
+              },
             ),
           ),
-
           _ProductRecallBanner(),
         ],
       ),

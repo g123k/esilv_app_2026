@@ -6,6 +6,7 @@ import 'package:esilv_app/res/app_theme_extension.dart';
 import 'package:esilv_app/screens/product/data/product_provider.dart';
 import 'package:esilv_app/screens/product/product_page_body.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductTab0 extends StatelessWidget {
   const ProductTab0({super.key});
@@ -36,7 +37,7 @@ class _Scores extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Product product = ProductProvider.of(context).product;
+    final Product product = context.watch<ProductProvider>().product;
 
     return DefaultTextStyle(
       style: context.theme.altText,
@@ -240,7 +241,7 @@ class _Info extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Product product = ProductProvider.of(context).product;
+    final Product product = context.watch<ProductProvider>().product;
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Column(

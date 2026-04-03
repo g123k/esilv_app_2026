@@ -28,6 +28,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get greenscore => 'Green-Score';
 
   @override
+  String get product_action_add_to_favorites => 'Ajouter aux favoris';
+
+  @override
+  String get product_action_remove_from_favorites => 'Retirer des favoris';
+
+  @override
   String get product_quantity => 'Quantité :';
 
   @override

@@ -3,13 +3,14 @@ import 'package:esilv_app/model/product.dart';
 import 'package:esilv_app/screens/product/data/product_provider.dart';
 import 'package:esilv_app/screens/product/widgets/product_title.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductTab1 extends StatelessWidget {
   const ProductTab1({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Product product = ProductProvider.of(context).product;
+    final Product product = context.watch<ProductProvider>().product;
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
 
     return Column(

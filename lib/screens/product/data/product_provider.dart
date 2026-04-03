@@ -1,24 +1,27 @@
 import 'package:esilv_app/model/product.dart';
+import 'package:esilv_app/repositories/product_repository.dart';
+import 'package:esilv_app/screens/product/data/product_provider_state.dart';
 import 'package:flutter/widgets.dart';
 
-class ProductProvider extends InheritedWidget {
-  const ProductProvider({
-    super.key,
-    required super.child,
-    required this.product,
-  });
-
-  final Product product;
-
-  static ProductProvider of(BuildContext context) {
-    final ProductProvider? result = context
-        .dependOnInheritedWidgetOfExactType<ProductProvider>();
-    assert(result != null, 'No ProductProvider found in context');
-    return result!;
+class ProductProvider extends ValueNotifier<ProductState> {
+  ProductProvider({required this.barcode})
+    : super(const ProductStateLoading()) {
+    _loadProduct();
   }
 
-  @override
-  bool updateShouldNotify(ProductProvider old) {
-    return product != old.product;
+  final String barcode;
+
+  // Only use if value is ProductStateSuccess, otherwise it will throw an error
+  Product get product => (value as ProductStateSuccess).product;
+
+  Future<void> _loadProduct() async {
+    value = const ProductStateLoading();
+
+    try {
+      Product product = await ProductRepository().getProduct(barcode);
+      value = ProductStateSuccess(product: product);
+    } catch (e) {
+      value = ProductStateError(error: e);
+    }
   }
 }

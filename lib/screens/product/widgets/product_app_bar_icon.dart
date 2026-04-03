@@ -13,12 +13,15 @@ class ProductAppBarIcon extends StatelessWidget {
       child: SafeArea(
         child: Material(
           type: MaterialType.transparency,
-          child: InkWell(
-            customBorder: const CircleBorder(),
-            onTap: onTap,
+          child: SizedBox.square(
+            dimension: kToolbarHeight,
             child: Padding(
-              padding: const EdgeInsetsDirectional.all(8.0),
-              child: icon,
+              padding: const EdgeInsets.all(6.0),
+              child: InkWell(
+                customBorder: const CircleBorder(),
+                onTap: onTap,
+                child: icon,
+              ),
             ),
           ),
         ),

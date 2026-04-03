@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:esilv_app/l10n/app_localizations.dart';
 import 'package:esilv_app/res/app_icons.dart';
 import 'package:esilv_app/screens/product/data/product_favorite_notifier.dart';
@@ -9,6 +11,7 @@ import 'package:esilv_app/screens/product/tabs/product_tab_3.dart';
 import 'package:esilv_app/screens/product/widgets/product_app_bar_icon.dart';
 import 'package:esilv_app/screens/product/widgets/product_header.dart';
 import 'package:esilv_app/screens/product/widgets/product_picture.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -26,9 +29,8 @@ class ProductPageBody extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<PageController>(create: (_) => PageController()),
         ChangeNotifierProvider<ProductFavoriteNotifier>(
-          create: (_) => ProductFavoriteNotifier(
-            ProductProvider.of(context).product.barcode,
-          ),
+          create: (_) =>
+              ProductFavoriteNotifier(context.read<ProductProvider>().barcode),
         ),
       ],
       child: Scaffold(
@@ -52,7 +54,9 @@ class ProductPageBody extends StatelessWidget {
                 top: 0.0,
                 start: 0.0,
                 child: ProductAppBarIcon(
-                  icon: const Icon(Icons.arrow_back_rounded),
+                  icon: !kIsWeb && (Platform.isIOS || Platform.isMacOS)
+                      ? const Icon(Icons.arrow_back_ios_new_rounded)
+                      : const Icon(Icons.arrow_back_rounded),
                   onTap: context.pop,
                 ),
               ),

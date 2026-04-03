@@ -41,7 +41,12 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         extensions: [OffThemeExtension.defaultValues()],
         fontFamily: 'Avenir',
-        appBarTheme: AppBarThemeData(centerTitle: false),
+        appBarTheme: AppBarThemeData(
+          centerTitle: false,
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.white,
         navigationBarTheme: const NavigationBarThemeData(
           indicatorColor: AppColors.blue,
         ),
