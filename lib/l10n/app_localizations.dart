@@ -94,6 +94,18 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('fr')];
 
+  /// No description provided for @yes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Oui'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In fr, this message translates to:
+  /// **'Non'**
+  String get no;
+
   /// No description provided for @my_scans_screen_title.
   ///
   /// In fr, this message translates to:

@@ -104,17 +104,23 @@ class _NutriScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          AppLocalizations.of(context)!.nutriscore,
-          style: context.theme.title3,
-        ),
-        const SizedBox(height: 5.0),
-        Image.asset(_findAssetName(), height: 42.0),
-      ],
+    return MergeSemantics(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            AppLocalizations.of(context)!.nutriscore,
+            style: context.theme.title3,
+          ),
+          const SizedBox(height: 5.0),
+          Image.asset(
+            _findAssetName(),
+            semanticLabel: nutriscore.name.toUpperCase(),
+            height: 42.0,
+          ),
+        ],
+      ),
     );
   }
 
@@ -137,17 +143,19 @@ class _NovaGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          AppLocalizations.of(context)!.nova_group,
-          style: context.theme.title3,
-        ),
-        const SizedBox(height: 5.0),
-        Text(_findLabel(), style: const TextStyle(color: AppColors.grey2)),
-      ],
+    return MergeSemantics(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            AppLocalizations.of(context)!.nova_group,
+            style: context.theme.title3,
+          ),
+          const SizedBox(height: 5.0),
+          Text(_findLabel(), style: const TextStyle(color: AppColors.grey2)),
+        ],
+      ),
     );
   }
 
@@ -171,28 +179,34 @@ class _GreenScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          AppLocalizations.of(context)!.greenscore,
-          style: context.theme.title3,
-        ),
-        const SizedBox(height: 5.0),
-        Row(
-          children: <Widget>[
-            Icon(_findIcon(), color: _findIconColor()),
-            const SizedBox(width: 10.0),
-            Expanded(
-              child: Text(
-                _findLabel(),
-                style: const TextStyle(color: AppColors.grey2),
+    return MergeSemantics(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            AppLocalizations.of(context)!.greenscore,
+            style: context.theme.title3,
+          ),
+          const SizedBox(height: 5.0),
+          Row(
+            children: <Widget>[
+              Icon(
+                _findIcon(),
+                semanticLabel: greenScore.name,
+                color: _findIconColor(),
               ),
-            ),
-          ],
-        ),
-      ],
+              const SizedBox(width: 10.0),
+              Expanded(
+                child: Text(
+                  _findLabel(),
+                  style: const TextStyle(color: AppColors.grey2),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -294,20 +308,22 @@ class _ProductItemValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsetsDirectional.symmetric(vertical: 12.0),
-          child: Row(
-            children: <Widget>[
-              Expanded(child: Text(label)),
-              Expanded(child: Text(value, textAlign: TextAlign.end)),
-            ],
+    return MergeSemantics(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsetsDirectional.symmetric(vertical: 12.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(child: Text(label)),
+                Expanded(child: Text(value, textAlign: TextAlign.end)),
+              ],
+            ),
           ),
-        ),
-        if (includeDivider) const Divider(height: 1.0),
-      ],
+          if (includeDivider) const Divider(height: 1.0),
+        ],
+      ),
     );
   }
 }
@@ -320,29 +336,39 @@ class _ProductBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.blueLight,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      padding: const EdgeInsetsDirectional.symmetric(
-        vertical: 10.0,
-        horizontal: 15.0,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Icon(
-            value == _ProductBubbleValue.on
-                ? AppIcons.checkmark
-                : AppIcons.close,
-            color: AppColors.white,
-          ),
-          const SizedBox(width: 10.0),
-          Expanded(
-            child: Text(label, style: const TextStyle(color: AppColors.white)),
-          ),
-        ],
+    final String semanticsValue = value == _ProductBubbleValue.on
+        ? AppLocalizations.of(context)!.yes
+        : AppLocalizations.of(context)!.no;
+    return Semantics(
+      label: '$label : $semanticsValue',
+      excludeSemantics: true,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.blueLight,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        padding: const EdgeInsetsDirectional.symmetric(
+          vertical: 10.0,
+          horizontal: 15.0,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Icon(
+              value == _ProductBubbleValue.on
+                  ? AppIcons.checkmark
+                  : AppIcons.close,
+              color: AppColors.white,
+            ),
+            const SizedBox(width: 10.0),
+            Expanded(
+              child: Text(
+                label,
+                style: const TextStyle(color: AppColors.white),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

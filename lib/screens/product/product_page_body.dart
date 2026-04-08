@@ -25,6 +25,8 @@ class ProductPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<PageController>(create: (_) => PageController()),
@@ -58,6 +60,9 @@ class ProductPageBody extends StatelessWidget {
                       ? const Icon(Icons.arrow_back_ios_new_rounded)
                       : const Icon(Icons.arrow_back_rounded),
                   onTap: context.pop,
+                  semantics: MaterialLocalizations.of(
+                    context,
+                  ).backButtonTooltip,
                 ),
               ),
               PositionedDirectional(
@@ -72,6 +77,10 @@ class ProductPageBody extends StatelessWidget {
                             : AppIcons.star_empty,
                       ),
                       onTap: () => notifier.toggle(),
+                      semantics: notifier.value == true
+                          ? appLocalizations
+                                .product_action_remove_from_favorites
+                          : appLocalizations.product_action_add_to_favorites,
                     );
                   },
                 ),

@@ -1,4 +1,6 @@
 {
+  "yes": "Oui",
+  "no": "Non",
   "my_scans_screen_title": "Mes scans",
   "my_scans_screen_description": "Vous n'avez pas encore scanné de produit",
   "my_scans_screen_button": "Commencer",

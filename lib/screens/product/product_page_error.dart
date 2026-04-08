@@ -5,14 +5,14 @@ class ProductPageError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
               'Une erreur est survenue',
-              style: TextStyle(color: Colors.red, fontSize: 16),
+              style: TextStyle(color: Colors.red[900]!, fontSize: 16.0),
             ),
             SizedBox(height: 10.0),
           ],

@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
         title: Text(localizations.my_scans_screen_title),
         actions: [
           IconButton(
+            tooltip: 'Scanner un code-barres',
             onPressed: () {},
             icon: Padding(
               padding: const EdgeInsetsDirectional.only(end: 8.0),
@@ -51,10 +52,12 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  spacing: 4.0,
                   children: [
                     Text(localizations.my_scans_screen_button.toUpperCase()),
-                    const SizedBox(width: 4.0),
-                    Icon(Icons.arrow_right_alt_rounded),
+                    ExcludeSemantics(
+                      child: Icon(Icons.arrow_right_alt_rounded),
+                    ),
                   ],
                 ),
               ),

@@ -9,6 +9,12 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get yes => 'Oui';
+
+  @override
+  String get no => 'Non';
+
+  @override
   String get my_scans_screen_title => 'Mes scans';
 
   @override
